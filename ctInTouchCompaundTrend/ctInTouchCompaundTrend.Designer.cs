@@ -39,6 +39,8 @@
             this.пвапваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.l_Information = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -46,6 +48,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -64,8 +67,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.chart2);
-            this.splitContainer1.Size = new System.Drawing.Size(794, 444);
-            this.splitContainer1.SplitterDistance = 228;
+            this.splitContainer1.Size = new System.Drawing.Size(794, 411);
+            this.splitContainer1.SplitterDistance = 211;
             this.splitContainer1.TabIndex = 1;
             // 
             // chart1
@@ -73,6 +76,7 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart1.BackColor = System.Drawing.Color.Transparent;
             chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
             chartArea1.AxisX.IsLabelAutoFit = false;
             chartArea1.AxisX.LabelAutoFitMaxFontSize = 8;
@@ -99,6 +103,8 @@
             chartArea1.AxisY.MinorGrid.Interval = 0.5D;
             chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
             chartArea1.AxisY.Title = "содержание серы, %";
+            chartArea1.CursorX.IsUserEnabled = true;
+            chartArea1.CursorX.IsUserSelectionEnabled = true;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.ContextMenuStrip = this.contextMenuStrip1;
@@ -116,7 +122,7 @@
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Single;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(797, 228);
+            this.chart1.Size = new System.Drawing.Size(797, 211);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 
@@ -138,6 +144,7 @@
             this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart2.BackColor = System.Drawing.Color.Transparent;
             chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
             chartArea2.AxisX.IsLabelAutoFit = false;
             chartArea2.AxisX.LabelAutoFitMaxFontSize = 8;
@@ -153,7 +160,6 @@
             chartArea2.AxisY.LabelStyle.Format = "{0:f3}";
             chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
             chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.LightGray;
-            chartArea2.AxisY.Maximum = 5D;
             chartArea2.AxisY.Minimum = 0D;
             chartArea2.AxisY.MinorGrid.Enabled = true;
             chartArea2.AxisY.MinorGrid.Interval = 0.5D;
@@ -179,20 +185,39 @@
             series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Single;
             series2.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Single;
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(797, 220);
+            this.chart2.Size = new System.Drawing.Size(797, 204);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
+            this.chart2.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.chart2_AxisViewChanged);
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // l_Information
+            // 
+            this.l_Information.AutoSize = true;
+            this.l_Information.Location = new System.Drawing.Point(7, 9);
+            this.l_Information.Name = "l_Information";
+            this.l_Information.Size = new System.Drawing.Size(35, 13);
+            this.l_Information.TabIndex = 0;
+            this.l_Information.Text = "label1";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.l_Information);
+            this.panel1.Location = new System.Drawing.Point(3, 420);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(794, 29);
+            this.panel1.TabIndex = 2;
             // 
             // ctInTouchCompaundTrend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.splitContainer1);
             this.Name = "ctInTouchCompaundTrend";
             this.Size = new System.Drawing.Size(800, 450);
@@ -203,6 +228,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -214,5 +241,7 @@
         private System.Windows.Forms.ToolStripMenuItem пвапваToolStripMenuItem;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label l_Information;
+        private System.Windows.Forms.Panel panel1;
     }
 }
