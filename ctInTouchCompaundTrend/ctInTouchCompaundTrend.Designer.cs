@@ -36,8 +36,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.пвапваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Lable_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.l_Information = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -48,6 +50,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,11 +84,15 @@
             chartArea1.AxisX.IsLabelAutoFit = false;
             chartArea1.AxisX.LabelAutoFitMaxFontSize = 8;
             chartArea1.AxisX.LabelStyle.Format = "hh:mm:ss dd.MM.yyyy";
-            chartArea1.AxisX.LabelStyle.IsEndLabelVisible = false;
+            chartArea1.AxisX.LabelStyle.Interval = 0D;
+            chartArea1.AxisX.LabelStyle.IntervalOffset = 0D;
+            chartArea1.AxisX.LabelStyle.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea1.AxisX.LabelStyle.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
             chartArea1.AxisX.LabelStyle.IsStaggered = true;
             chartArea1.AxisX.MajorGrid.Interval = 1D;
             chartArea1.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Hours;
             chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisX.MajorTickMark.Interval = 0D;
             chartArea1.AxisX.MinorGrid.Enabled = true;
             chartArea1.AxisX.MinorGrid.Interval = 30D;
             chartArea1.AxisX.MinorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
@@ -113,10 +120,10 @@
             series1.BorderWidth = 4;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.LabelFormat = "{0:f2}";
+            series1.LabelFormat = "{0:f3}";
             series1.Legend = "Legend1";
             series1.MarkerColor = System.Drawing.Color.Blue;
-            series1.MarkerSize = 6;
+            series1.MarkerSize = 2;
             series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Square;
             series1.Name = "Series1";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
@@ -129,15 +136,17 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.пвапваToolStripMenuItem});
+            this.Lable_ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(176, 26);
             // 
-            // пвапваToolStripMenuItem
+            // Lable_ToolStripMenuItem
             // 
-            this.пвапваToolStripMenuItem.Name = "пвапваToolStripMenuItem";
-            this.пвапваToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.пвапваToolStripMenuItem.Text = "пвапва";
+            this.Lable_ToolStripMenuItem.CheckOnClick = true;
+            this.Lable_ToolStripMenuItem.Name = "Lable_ToolStripMenuItem";
+            this.Lable_ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.Lable_ToolStripMenuItem.Text = "Показывать метки";
+            this.Lable_ToolStripMenuItem.CheckedChanged += new System.EventHandler(this.Lable_ToolStripMenuItem_CheckedChanged);
             // 
             // chart2
             // 
@@ -157,7 +166,9 @@
             chartArea2.AxisX.Title = "Расстояние, км";
             chartArea2.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
             chartArea2.AxisY.IsLabelAutoFit = false;
-            chartArea2.AxisY.LabelStyle.Format = "{0:f3}";
+            chartArea2.AxisY.LabelStyle.Format = "#.##";
+            chartArea2.AxisY.LabelStyle.Interval = 0D;
+            chartArea2.AxisY.LabelStyle.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
             chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
             chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.LightGray;
             chartArea2.AxisY.Minimum = 0D;
@@ -169,17 +180,17 @@
             chartArea2.CursorX.IsUserSelectionEnabled = true;
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
-            this.chart2.ContextMenuStrip = this.contextMenuStrip1;
+            this.chart2.ContextMenuStrip = this.contextMenuStrip2;
             this.chart2.Location = new System.Drawing.Point(-1, -8);
             this.chart2.Name = "chart2";
             series2.BorderWidth = 4;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.LabelFormat = "{0:f2}";
-            series2.LabelToolTip = "#VAL";
+            series2.LabelFormat = "{0:f3}";
+            series2.LabelToolTip = "#VALX";
             series2.Legend = "Legend1";
             series2.MarkerColor = System.Drawing.Color.Navy;
-            series2.MarkerSize = 6;
+            series2.MarkerSize = 2;
             series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Square;
             series2.Name = "Series1";
             series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Single;
@@ -189,6 +200,22 @@
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
             this.chart2.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.chart2_AxisViewChanged);
+            this.chart2.Paint += new System.Windows.Forms.PaintEventHandler(this.chart2_Paint);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(176, 26);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.CheckOnClick = true;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.toolStripMenuItem1.Text = "Показывать метки";
+            this.toolStripMenuItem1.CheckedChanged += new System.EventHandler(this.toolStripMenuItem1_CheckedChanged);
             // 
             // timer1
             // 
@@ -228,6 +255,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -238,10 +266,12 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem пвапваToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Lable_ToolStripMenuItem;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label l_Information;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

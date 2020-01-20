@@ -110,5 +110,19 @@ namespace ctInTouchCompaundTrend
         private void chart2_AxisViewChanged(object sender, System.Windows.Forms.DataVisualization.Charting.ViewEventArgs e)
         {
         }
+
+        private void Lable_ToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            chart1.Series[0].IsValueShownAsLabel = Lable_ToolStripMenuItem.Checked;
+        }
+
+        private void toolStripMenuItem1_CheckedChanged(object sender, EventArgs e)
+        {
+            chart2.Series[0].IsValueShownAsLabel = toolStripMenuItem1.Checked;
+        }
+
+        private void chart2_Paint(object sender, PaintEventArgs e)
+        {
+        }
     }
 }
