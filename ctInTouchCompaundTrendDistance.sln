@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ctInTouchCompaundTrend", "ctInTouchCompaundTrend\ctInTouchCompaundTrend.csproj", "{2BEE457C-E3AB-4D99-B055-AD659511138A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ctInTouchCompaundTrendDistance", "ctInTouchCompaundTrendDistance\ctInTouchCompaundTrendDistance.csproj", "{2BEE457C-E3AB-4D99-B055-AD659511138A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
